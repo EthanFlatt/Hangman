@@ -1,3 +1,145 @@
 * {
     box-sizing: border-box;
 }
+
+body {
+    text-align: center;
+}
+
+#board{
+    position: relative;
+    margin: auto;
+    display: grid;
+    grid-template-columns: repeat(2, 275px);
+    grid-column-gap: 25px;
+    height: 600px;
+    width: 1200px;
+    background-color: #2b5204;
+}
+
+#boardBase {
+    position: absolute;
+    margin: auto;
+    bottom: 0;
+    right: -15px;
+    height: 18px;
+    width: 1232px;
+    background-color: #7D3B0B
+}
+
+#chalk {
+    position: absolute;
+    right: 50px;
+    bottom: 18px;
+    height: 7px;
+    width: 53px;
+    background-color: #FEF6F6
+}
+
+#eraser {
+    position: absolute;
+    left: 50px;
+    bottom: 18px;
+    height: 13px;
+    width: 63px;
+    background-color: #000000
+}
+
+#horizontal1 {
+    position: absolute;
+    left: 59px;
+    bottom: 100px;
+    height: 5px;
+    width: 400px;
+    background-color: #FEF6F6
+}
+
+#vertical1 {
+    position: absolute;
+    left: 42px;
+    bottom: 317px;
+    height: 5px;
+    width: 434px;
+    transform: rotate(90deg);
+    background-color: #FEF6F6
+}
+
+#horizontal2 {
+    position: absolute;
+    left: 258px;
+    top: 63px;
+    height: 5px;
+    width: 296px;
+    background-color: #FEF6F6
+}
+
+#vertical2 {
+    position: absolute;
+    left: 514px;
+    top: 99px;
+    height: 5px;
+    width: 76px;
+    transform: rotate(90deg);
+    background-color: #FEF6F6
+}
+
+#head {
+    position: absolute;
+    left: 514px;
+    top: 139px;
+    height: 75px;
+    width: 75px;
+    border-radius: 50%;
+    background-color: #FEF6F6
+}
+
+#torso {
+    position: absolute;
+    left: 486px;
+    top: 278px;
+    height: 5px;
+    width: 133px;
+    transform: rotate(90deg);
+    background-color: #FEF6F6
+}
+
+#leftArm {
+    position: absolute;
+    left: 475px;
+    top: 240px;
+    height: 4px;
+    width: 80px;
+    transform: rotate(45deg);
+    background-color: #FEF6F6
+
+}
+
+#rightArm {
+    position: absolute;
+    left: 550px;
+    top: 240px;
+    height: 4px;
+    width: 80px;
+    transform: rotate(135deg);
+    background-color: #FEF6F6
+}
+
+#leftLeg {
+    position: absolute;
+    left: 475px;
+    top: 380px;
+    height: 4px;
+    width: 80px;
+    transform: rotate(-45deg);
+    background-color: #FEF6F6
+}
+
+#rightLeg {
+    position: absolute;
+    left: 550px;
+    top: 380px;
+    height: 4px;
+    width: 80px;
+    transform: rotate(-135deg);
+    background-color: #FEF6F6
+}
