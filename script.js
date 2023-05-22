@@ -18,7 +18,7 @@ const inputWordBar = document.getElementById('inputWordBar')
 const inputWordButton = document.getElementById('inputWordButton')
 const head = document.getElementById('head')
 const torso = document.getElementById('torso')
-const leftArm = document.getElementById('torso')
+const leftArm = document.getElementById('leftArm')
 const rightArm = document.getElementById('rightArm')
 const leftLeg = document.getElementById('leftLeg')
 const rightLeg = document.getElementById('rightLeg')
@@ -74,6 +74,11 @@ function guessLetter() {
         return
     }
     guessedLettersArray.push(guess)
+
+    if (!selectedWord.includes(guess)) {
+        attempts--
+        hangman()
+    }
     
 }
 
@@ -85,6 +90,14 @@ function guessWord() {
     }
 }
 
+function hangman() {
+    if (attempts === 5) {head.style.opacity = '1'}
+    if (attempts === 4) {torso.style.opacity = '1'}
+    if (attempts === 3) {leftArm.style.opacity = '1'}
+    if (attempts === 2) {rightArm.style.opacity = '1'}
+    if (attempts === 1) {leftLeg.style.opacity = '1'}
+    if (attempts === 0) {rightLeg.style.opacity = '1'}
+}
 
 // when word is complete
 // function win() {
