@@ -6,8 +6,9 @@ body {
     text-align: center;
 }
 
-#initButton {
-    
+#initializeButton {
+    margin-top: 10px;
+    margin-right: 1000px
 }
 
 #board{
@@ -176,4 +177,15 @@ body {
     right: 400px;
     top: 200px;
     color: #FEF6F6;
+}
+
+#word {
+    position: absolute;
+    right: 400px;
+    top: 400px;
+    color: #FEF6F6;
+}
+
+#hint{
+    
 }
