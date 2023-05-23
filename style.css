@@ -193,6 +193,9 @@ body {
     color: #FEF6F6;
 }
 
-#hint{
-    
+#bottomButtons {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
 }

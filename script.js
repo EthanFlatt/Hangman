@@ -43,25 +43,31 @@ inputWordButton.addEventListener('click', function() {
 
 /*----- functions -----*/
 
-
+// function chooseWord() {
     let selectedWord = wordsList[Math.floor(Math.random() * wordsList.length)]
-    // wordDisplay.innerText = selectedWord
-    // wordDisplay.style.opacity = 1
+// }
 
+// chooseWord() 
+
+lettersGuessed.innterText += guessedLettersArray
 
 // display state of word
 function displayWord() {
     let word = ''
-    for (let i = 0; i <selectedWord.length; i++) {
-        if (guessedLettersArray.includes(selectedWord[i])) {
-            word += selectedWord[i]
-        } else if (guessedWord === selectedWord) {
-            word += selectedWord
-        } else { 
-            word += "_"
-        }
-    }   
-    wordDisplay.innerText = word
+    if (attempts > 0) {
+        for (let i = 0; i <selectedWord.length; i++) {
+            if (guessedLettersArray.includes(selectedWord[i])) {
+                word += selectedWord[i]
+            } else { 
+                word += "_"
+            }
+        }  
+        if (guessedWord === selectedWord) {
+            word  = selectedWord
+        }  
+
+        wordDisplay.innerText = word
+    }
 }
 
 displayWord()
@@ -72,41 +78,60 @@ function guessLetter() {
     if (guessedLettersArray.includes(guess)) {
         alert('You already guessed that letter.')
         return
-    }
-    guessedLettersArray.push(guess)
-
-    if (!selectedWord.includes(guess)) {
+    } else if (!selectedWord.includes(guess)) {
         attempts--
         hangman()
-    }
-    
+    } 
+    guessedLettersArray.push(guess)
+    win()
 }
+
 
 // evaluate user guess word
 function guessWord() {
     let guess = inputWordBar.value
     if (guess === selectedWord) {
-        guessedWord += guess
+        guessedWord = guess
+    } else {
+        attempts--
+        hangman()
     }
+    win()
 }
 
+// make body appear
 function hangman() {
-    if (attempts === 5) {head.style.opacity = '1'}
-    if (attempts === 4) {torso.style.opacity = '1'}
-    if (attempts === 3) {leftArm.style.opacity = '1'}
-    if (attempts === 2) {rightArm.style.opacity = '1'}
-    if (attempts === 1) {leftLeg.style.opacity = '1'}
-    if (attempts === 0) {rightLeg.style.opacity = '1'}
+    if (attempts === 5) {head.style.opacity = '1'
+        head.style.transition = '0.5s'}
+    if (attempts === 4) {torso.style.opacity = '1' 
+        torso.style.transition = '0.5s'}
+    if (attempts === 3) {leftArm.style.opacity = '1'
+        leftArm.style.transition = '0.5s'}
+    if (attempts === 2) {rightArm.style.opacity = '1'
+        rightArm.style.transition = '0.5s'}
+    if (attempts === 1) {leftLeg.style.opacity = '1'
+        leftLeg.style.transition = '0.5s'}
+    if (attempts === 0) {rightLeg.style.opacity = '1'
+        rightLeg.style.transition = '0.5s'
+        wordDisplay.style.transition = '2s'
+        wordDisplay.innerText = "You lose"
+        }
+}
+function win() {
+    if (guessedWord === selectedWord) {
+        attempts === 6
+        head.style.opacity = '0'
+        torso.style.opacity = '0'
+        leftArm.style.opacity = '0'
+        rightArm.style.opacity = '0'
+        leftLeg.style.opacity = '0'
+        rightLeg.style.opacity = '0'
+        wordDisplay.innerText = ''
+        console.log('I win')
+        
+    }
+    
+    
 }
 
-// when word is complete
-// function win() {
-//     if ()
-// }
 
-
-
-// Game over
-// if (attempts === 0) {
-    // display game over
-// }
