@@ -23,11 +23,15 @@ const rightArm = document.getElementById('rightArm')
 const leftLeg = document.getElementById('leftLeg')
 const rightLeg = document.getElementById('rightLeg')
 const highScore = document.getElementById('highScore')
-const round = document.getElementById('round')
-const lettersGuessed = document.getElementById('lettersGuessed')
+const roundSpan = document.getElementById('roundSpan')
+const lettersGuessedSpan = document.getElementById('lettersGuessedSpan')
 const wordDisplay = document.getElementById('wordDisplay')
 
 /*----- event listeners -----*/
+
+initializeButton.addEventListener('click', function() {
+    reset()
+})
 
 inputLetterButton.addEventListener('click', function() {
     guessLetter()
@@ -43,13 +47,9 @@ inputWordButton.addEventListener('click', function() {
 
 /*----- functions -----*/
 
-// function chooseWord() {
-    let selectedWord = wordsList[Math.floor(Math.random() * wordsList.length)]
-// }
+let selectedWord = wordsList[Math.floor(Math.random() * wordsList.length)]
 
-// chooseWord() 
-
-lettersGuessed.innterText += guessedLettersArray
+lettersGuessedSpan.innterText = guessedLettersArray
 
 // display state of word
 function displayWord() {
@@ -113,25 +113,36 @@ function hangman() {
         leftLeg.style.transition = '0.5s'}
     if (attempts === 0) {rightLeg.style.opacity = '1'
         rightLeg.style.transition = '0.5s'
-        wordDisplay.style.transition = '2s'
         wordDisplay.innerText = "You lose"
+        round.innerText = 1
         }
 }
 function win() {
-    if (guessedWord === selectedWord) {
-        attempts === 6
-        head.style.opacity = '0'
-        torso.style.opacity = '0'
-        leftArm.style.opacity = '0'
-        rightArm.style.opacity = '0'
-        leftLeg.style.opacity = '0'
-        rightLeg.style.opacity = '0'
-        wordDisplay.innerText = ''
+    if (guessedWord || wordDisplay.innerText === selectedWord) {
+        roundSpan.innerText + 1
+        if (roundSpan.innerText > highScore.innerText) {
+            highScore.innerText + 1
+        }
         console.log('I win')
-        
+        reset()
     }
     
     
 }
 
+function reset() {
+    attempts = 6
+    guessedLettersArray = []
+    guessedWord = ''
+    roundSpan === 1
+    head.style.opacity = '0'
+    torso.style.opacity = '0'
+    leftArm.style.opacity = '0'
+    rightArm.style.opacity = '0'
+    leftLeg.style.opacity = '0'
+    rightLeg.style.opacity = '0'
+    displayWord()
+    selectedWord = wordsList[Math.floor(Math.random() * wordsList.length)]
+    
+}
 
