@@ -165,32 +165,40 @@ body {
 
 #highScore {
     position: absolute;
-    right: 400px;
+    right: 300px;
     top: 100px;
-    color: #FEF6F6
+    color: #FEF6F6;
+    min-width: 200px;
+    text-align: start
 }
 
 #round {
     position: absolute;
-    right: 400px;
+    right: 300px;
     top: 150px;
-    color: #FEF6F6
+    color: #FEF6F6;
+    min-width: 200px;
+    text-align: start
 }
 
 #lettersGuessed {
     position: absolute;
-    right: 400px;
+    right: 300px;
     top: 200px;
     color: #FEF6F6;
+    min-width: 200px;
+    text-align: start
 }
 
 #wordDisplay {
     position: absolute;
-    right: 250px;
+    right: 100px;
     top: 400px;
     font-size: 2rem;
     letter-spacing: 20px;
     color: #FEF6F6;
+    min-width: 400px;
+    text-align: start
 }
 
 #bottomButtons {
@@ -198,4 +206,9 @@ body {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+}
+
+#infoSection {
+    min-width: 200px;
+    text-align: start;
 }
