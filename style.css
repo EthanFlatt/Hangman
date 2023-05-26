@@ -17,7 +17,7 @@ body {
     margin-right: 1000px
 }
 
-#board{
+.board{
     position: relative;
     margin: 20px auto;
     display: grid;
@@ -121,7 +121,7 @@ body {
     left: 350px;
     top: 265px;
     height: 4px;
-    width: 80px;
+    width: 90px;
     transform: rotate(45deg);
     background-color: #FEF6F6;
     opacity: 0;
@@ -129,10 +129,10 @@ body {
 
 #rightArm {
     position: absolute;
-    left: 425px;
+    left: 415px;
     top: 265px;
     height: 4px;
-    width: 80px;
+    width: 90px;
     transform: rotate(135deg);
     background-color: #FEF6F6;
     opacity: 0;
@@ -141,9 +141,9 @@ body {
 #leftLeg {
     position: absolute;
     left: 350px;
-    top: 405px;
+    top: 400px;
     height: 4px;
-    width: 80px;
+    width: 90px;
     transform: rotate(-45deg);
     background-color: #FEF6F6;
     opacity: 0;
@@ -151,10 +151,10 @@ body {
 
 #rightLeg {
     position: absolute;
-    left: 425px;
-    top: 405px;
+    left: 415px;
+    top: 400px;
     height: 4px;
-    width: 80px;
+    width: 90px;
     transform: rotate(-135deg);
     background-color: #FEF6F6;
     opacity: 0;
@@ -208,7 +208,7 @@ body {
     overflow-wrap: break-word;
 }
 
-#bottomButtons {
+.bottomButtons {
     position: relative;
     left: 242px;
     display: flex;
@@ -217,7 +217,7 @@ body {
 
 }
 
-#infoSection {
+.infoSection {
     min-width: 200px;
     text-align: start;
 }

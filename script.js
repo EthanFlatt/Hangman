@@ -6,7 +6,6 @@ const getDictionary = async () => {
     return dictionary.data[0]
     }
 
-    
 /*----- state variables -----*/
 
 let attempts = 6
@@ -33,6 +32,7 @@ const highScore = document.getElementById('highScore')
 const round = document.getElementById('round')
 const lettersGuessed = document.getElementById('lettersGuessed')
 const wordDisplay = document.getElementById('wordDisplay')
+const bottomButtons = document.querySelector('.bottomButtons')
 
 /*----- event listeners -----*/
 
@@ -76,7 +76,7 @@ inputWordBar.addEventListener('keypress', async (e)=> {
 
 /*----- functions -----*/
 
-// display state of word
+// Displays state of word
 function displayWord() {
     let word = ''
     if (attempts > 0) {
@@ -95,7 +95,7 @@ function displayWord() {
     }
 }
 
-// Evaluate user guess letter
+// Evaluates user guess letter
 function guessLetter() {
     let guess = inputLetterBar.value.toLowerCase()
     if (guessedLettersArray.includes(guess)) {
@@ -110,7 +110,7 @@ function guessLetter() {
 }
 
 
-// evaluate user guess word
+// Evaluates user guess word
 function guessWord() {
     let guess = inputWordBar.value.toLowerCase()
     if (guess === selectedWord) {
@@ -121,7 +121,7 @@ function guessWord() {
     }
 }
 
-// make body appear
+// Used to make body appear, and used if game is lost
 function hangman() {
     if (attempts === 5) {head.style.opacity = '1'
         head.style.transition = '0.5s'}
@@ -136,8 +136,11 @@ function hangman() {
     if (attempts === 0) {rightLeg.style.opacity = '1'
         rightLeg.style.transition = '0.5s'
         wordDisplay.innerText = `You lose. The word was ${selectedWord}`
+        bottomButtons.style.visibility = 'hidden'
         }
 }
+
+// Used if game is won
 function win() {
     console.log('win')
     if (guessedWord || wordDisplay.innerText === selectedWord) {
@@ -150,13 +153,11 @@ function win() {
         wordDisplay.innerText = "You win! Next round"
         setTimeout(function() {
             finishRound()
-        }, 500)
-        
+        }, 750)
     }
-    
-    
 }
 
+// Used if user clicks start over button
 async function reset() {
     attempts = 6
     resetLettersGuessed()
@@ -169,12 +170,13 @@ async function reset() {
     rightArm.style.opacity = '0'
     leftLeg.style.opacity = '0'
     rightLeg.style.opacity = '0'
-    // selectedWord = wordsList[Math.floor(Math.random() * wordsList.length)]
+    bottomButtons.style.visibility = 'visible'
     selectedWord = await getDictionary()
     displayWord()
 
 }
 
+// Used if user finishes round
 async function finishRound() {
     attempts = 6
     resetLettersGuessed()
@@ -186,11 +188,11 @@ async function finishRound() {
     rightArm.style.opacity = '0'
     leftLeg.style.opacity = '0'
     rightLeg.style.opacity = '0'
-    // selectedWord = wordsList[Math.floor(Math.random() * wordsList.length)]
     selectedWord = await getDictionary()
     displayWord()
 }
 
+// Used to reset the letters guessed on the board
 function resetLettersGuessed() {
     guessedLettersArray = []
     lettersGuessed.innerText = 'Letters guessed: '
