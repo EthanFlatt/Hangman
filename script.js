@@ -1,6 +1,6 @@
 /*----- constants -----*/
 
-const wordsList = ['magnetic', 'eagle', 'champagne', 'heart', 'fragment']
+const wordsList = ['magnetic', 'eagle', 'champagne', 'heart', 'fragment', 'disproportionate']
 
 /*----- state variables -----*/
 
