@@ -1,6 +1,4 @@
 @font-face {
-    /* font-family: 'eraser';
-    src: url('./EraserRegular.ttf') format('opentype'); */
     font-family: 'chawp';
     src: url('./chawp.otf') format('opentype');
 }
@@ -14,7 +12,7 @@ body {
     text-align: center;
 }
 
-#initializeButton {
+#startButton {
     margin-top: 10px;
     margin-right: 1000px
 }
@@ -42,7 +40,7 @@ body {
 
 #chalk {
     position: absolute;
-    right: 50px;
+    right: 55px;
     bottom: 18px;
     height: 7px;
     width: 53px;
@@ -51,7 +49,7 @@ body {
 
 #eraser {
     position: absolute;
-    left: 50px;
+    left: 75px;
     bottom: 18px;
     height: 13px;
     width: 63px;
@@ -173,8 +171,8 @@ body {
 
 #highScore {
     position: absolute;
-    right: 300px;
-    top: 100px;
+    right: 350px;
+    top: 120px;
     color: #FEF6F6;
     min-width: 200px;
     text-align: start
@@ -182,8 +180,8 @@ body {
 
 #round {
     position: absolute;
-    right: 300px;
-    top: 150px;
+    right: 350px;
+    top: 170px;
     color: #FEF6F6;
     min-width: 200px;
     text-align: start
@@ -191,8 +189,8 @@ body {
 
 #lettersGuessed {
     position: absolute;
-    right: 100px;
-    top: 200px;
+    right: 150px;
+    top: 220px;
     color: #FEF6F6;
     min-width: 400px;
     text-align: start
@@ -200,20 +198,23 @@ body {
 
 #wordDisplay {
     position: absolute;
-    right: -95px;
-    top: 400px;
+    right: 5px;
+    top: 420px;
     font-size: 2rem;
     letter-spacing: 20px;
     color: #FEF6F6;
-    min-width: 600px;
+    width: 550px;
     text-align: start;
+    overflow-wrap: break-word;
 }
 
 #bottomButtons {
     position: relative;
+    left: 242px;
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: space-around;
+
 }
 
 #infoSection {

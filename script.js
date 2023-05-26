@@ -1,7 +1,12 @@
 /*----- constants -----*/
 
-const wordsList = ['magnetic', 'eagle', 'champagne', 'heart', 'fragment', 'disproportionate']
+const getDictionary = async () => {
+    const dictionary = await axios.get('https://random-word-api.vercel.app/api?words=1')
+    console.log(dictionary)
+    return dictionary.data[0]
+    }
 
+    
 /*----- state variables -----*/
 
 let attempts = 6
@@ -13,8 +18,7 @@ let selectedWord = ''
 
 /*----- cached elements  -----*/
 
-const initializeButton = document.getElementById('initializeButton')
-const hintButton = document.getElementById('hintButton')
+const startButton = document.getElementById('startButton')
 const inputLetterBar = document.getElementById('inputLetterBar')
 const inputLetterButton = document.getElementById('inputLetterButton')
 const inputWordBar = document.getElementById('inputWordBar')
@@ -32,7 +36,7 @@ const wordDisplay = document.getElementById('wordDisplay')
 
 /*----- event listeners -----*/
 
-initializeButton.addEventListener('click', function() {
+startButton.addEventListener('click', function() {
     reset()
 })
 
@@ -50,11 +54,30 @@ inputWordButton.addEventListener('click', function() {
     inputWordBar.value = ''
 })
 
+inputLetterBar.addEventListener('keypress', async (e)=> {
+    if (e.key === 'Enter') {
+        e.preventDefault()
+        guessLetter()
+        displayWord()
+        win()
+        inputLetterBar.value = ''
+    }   
+})
+
+inputWordBar.addEventListener('keypress', async (e)=> {
+    if (e.key === 'Enter') {
+        e.preventDefault()
+        guessWord()
+        displayWord()
+        win()
+        inputWordBar.value = ''
+    }   
+})
+
 /*----- functions -----*/
 
 // display state of word
 function displayWord() {
-    console.log('displayWord')
     let word = ''
     if (attempts > 0) {
         for (let i = 0; i <selectedWord.length; i++) {
@@ -69,13 +92,12 @@ function displayWord() {
         }  
 
         wordDisplay.innerText = word
-        console.log('h2', wordDisplay.innerText)
     }
 }
 
 // Evaluate user guess letter
 function guessLetter() {
-    let guess = inputLetterBar.value
+    let guess = inputLetterBar.value.toLowerCase()
     if (guessedLettersArray.includes(guess)) {
         alert('You already guessed that letter.')
         return
@@ -90,7 +112,7 @@ function guessLetter() {
 
 // evaluate user guess word
 function guessWord() {
-    let guess = inputWordBar.value
+    let guess = inputWordBar.value.toLowerCase()
     if (guess === selectedWord) {
         guessedWord = guess
     } else {
@@ -113,7 +135,7 @@ function hangman() {
         leftLeg.style.transition = '0.5s'}
     if (attempts === 0) {rightLeg.style.opacity = '1'
         rightLeg.style.transition = '0.5s'
-        wordDisplay.innerText = "You lose"
+        wordDisplay.innerText = `You lose. The word was ${selectedWord}`
         }
 }
 function win() {
@@ -126,7 +148,6 @@ function win() {
             highScore.innerText = `High score: ${highScoreHolder}` 
         }
         wordDisplay.innerText = "You win! Next round"
-        console.log('h1', wordDisplay.innerText)
         setTimeout(function() {
             finishRound()
         }, 500)
@@ -136,7 +157,7 @@ function win() {
     
 }
 
-function reset() {
+async function reset() {
     attempts = 6
     resetLettersGuessed()
     guessedWord = ''
@@ -148,12 +169,13 @@ function reset() {
     rightArm.style.opacity = '0'
     leftLeg.style.opacity = '0'
     rightLeg.style.opacity = '0'
-    selectedWord = wordsList[Math.floor(Math.random() * wordsList.length)]
+    // selectedWord = wordsList[Math.floor(Math.random() * wordsList.length)]
+    selectedWord = await getDictionary()
     displayWord()
 
 }
 
-function finishRound() {
+async function finishRound() {
     attempts = 6
     resetLettersGuessed()
     guessedWord = ''
@@ -164,7 +186,8 @@ function finishRound() {
     rightArm.style.opacity = '0'
     leftLeg.style.opacity = '0'
     rightLeg.style.opacity = '0'
-    selectedWord = wordsList[Math.floor(Math.random() * wordsList.length)]
+    // selectedWord = wordsList[Math.floor(Math.random() * wordsList.length)]
+    selectedWord = await getDictionary()
     displayWord()
 }
 
