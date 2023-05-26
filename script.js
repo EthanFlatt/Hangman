@@ -2,7 +2,7 @@
 
 const getDictionary = async () => {
     const dictionary = await axios.get('https://random-word-api.vercel.app/api?words=1')
-    console.log(dictionary)
+    console.log(dictionary.data[0])
     return dictionary.data[0]
     }
 
@@ -142,7 +142,6 @@ function hangman() {
 
 // Used if game is won
 function win() {
-    console.log('win')
     if (guessedWord || wordDisplay.innerText === selectedWord) {
         roundHolder++
         round.innerText = `Round: ${roundHolder}`
